@@ -26,4 +26,4 @@ List of features we didn't have time for but would love to see for Waffle.io
 
 ### Tech Stack
 
-We went with fullstack Javascript for quick development using React on the front end and Node.js + Express for our back end. For our real-time features we used smee.io for our webhooks to our githubApp and sockets.io for our realtime update of our client.
+We went with fullstack Javascript for quick development using React on the front end and Node.js + Express for our back end. For our real-time features we used smee.io for our webhooks to our github App and sockets.io for our realtime update of our client.
