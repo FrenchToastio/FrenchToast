@@ -22,8 +22,16 @@ List of features we didn't have time for but would love to see for Waffle.io
 5. Tree visualization of tasks/project
 6. Recommend tasks that have been in a certain state for too long to be broken down into an epic
 7. Organize each user's dashboard to show tasks at the top of the column that are relevant to them (i.e. display first all the ones assigned to them at the top)
+8. A neural network that would recommend weights to tasks and would adjust this recommendation given some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hndsight weighting, developer review of task difficulty, merge conflicts/revisions needed, ect..)
 ```
 
 ### Tech Stack
 
 We went with fullstack Javascript for quick development using React on the front end and Node.js + Express for our back end. For our real-time features we used smee.io for our webhooks to our github App and sockets.io for our realtime update of our client.
+
+### Instalation/Run instruction
+
+1. Clone down this repo
+2. npm install
+3. npm start
+4. Enjoy!!
