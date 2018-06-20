@@ -1,3 +1,6 @@
+//Probot didn't work well for us ='[ so we are not using this file
+
+
 module.exports = robot => {
   // Your code here
   robot.log('Yay, the app was loaded!')
@@ -25,3 +28,4 @@ const smee = new SmeeClient({
 })
 
 const events = smee.start()
+
