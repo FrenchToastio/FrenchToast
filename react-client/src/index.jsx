@@ -3,6 +3,13 @@ import ReactDOM from "react-dom";
 import TaskItem from "./components/TaskItem.jsx";
 import Dragula from "react-dragula";
 import BurnChart from "./components/BurnChart.jsx";
+// import { Dialog, DialogTitle, DialogContent, DialogContentText } from 'material-ui';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const theUser = "jkang1220";
 
@@ -27,9 +34,12 @@ class App extends React.Component {
     this.InProgressColumn = React.createRef();
     this.doneColumn = React.createRef();
     this.showCharts = this.showCharts.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.state = {
       loading: true,
-      toggleCharts: false
+      toggleCharts: false, 
+      open: false
     };
   }
 
@@ -237,11 +247,23 @@ class App extends React.Component {
     );
   }
 
+
+
+  showModal () {
+    console.log('open click')
+    this.setState({ open: true });
+  }
+
   showCharts() {
     this.setState({
       toggleCharts: !this.state.toggleCharts
     });
   }
+
+  handleClose() {
+      console.log('closing')
+    this.setState({ open: false });
+  };
 
   render() {
     return this.state.loading ? (
@@ -262,6 +284,21 @@ class App extends React.Component {
           <button onClick={this.showCharts}>
             Show Burn-Down and Burn-Up Charts
           </button>
+        <Dialog
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+
+        >
+         <DialogTitle id="alert-dialog-title">{"Items That Have Not Been Updated Recently:"}</DialogTitle>
+          <DialogContent>
+            <TaskItem item={this.state.todo[0]} />
+          </DialogContent>
+
+        </Dialog>
+
+          <img src="https://cdn.icon-icons.com/icons2/1283/PNG/512/1497619898-jd24_85173.png" onClick={this.showModal} height="50px" width="50px"></img>
         </div>
         <h3>Welcome {theUser}!</h3>
         <div className="container">
