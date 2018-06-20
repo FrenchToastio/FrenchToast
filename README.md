@@ -1,4 +1,4 @@
-# FrenchToast
+# FrenchToast.io
 ## Waffle.io Hackathon Challenge
 
 ### Intro
