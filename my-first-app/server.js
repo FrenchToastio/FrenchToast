@@ -1,5 +1,6 @@
 const express = require('express');
 const socketRouter = require('./socketRouter.js')
+const axios = require('axios')
 
 // const webpackDevMiddleware = require('webpack-dev-middleware');
 // const webpack = require('webpack');
@@ -37,6 +38,17 @@ const events = smee.start()
 //   },
 //   historyApiFallback: true,
 // }));
+app.get('/github/allIssues', (req, res) => {
+  console.log('heya whats going on?')
+  axios.get('https://api.github.com/repos/FrenchToastio/TestRepo/issues').then((data) => {
+    console.log('are in we in data?')
+    console.log('can I look at data?', data.data)
+    res.send(data.data)
+  }).catch((err) => {
+    console.log('whats the error', err)
+  })
+
+})
 
 app.post('github/update', (req, res) => {
   //do here what ever you want to update the gitHub repo here using the github api
