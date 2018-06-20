@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 
 const threeDays = 1000 * 60 * 60 * 24 * 3;
 const fourDays = 1000 * 60 * 60 * 24 * 4;
