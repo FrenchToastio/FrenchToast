@@ -20,6 +20,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
     "react": "^16.4.1",
+    "react-c3js": "^0.1.20",
     "react-dom": "^16.4.1",
     "react-dragula": "^1.1.17"
   }

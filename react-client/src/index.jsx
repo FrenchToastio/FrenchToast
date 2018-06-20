@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import TaskItem from "./components/TaskItem.jsx";
 import Dragula from "react-dragula";
+import BurnChart from "./components/BurnChart.jsx"
 
 class App extends React.Component {
   constructor(props) {
@@ -10,9 +11,12 @@ class App extends React.Component {
     this.todoColumn = React.createRef();
     this.InProgressColumn = React.createRef();
     this.doneColumn = React.createRef();
+    this.showCharts = this.showCharts.bind(this)
     this.state = {
-      loading: true
+      loading: true, 
+      toggleCharts: false
     };
+
   }
 
   getData() {
@@ -187,12 +191,30 @@ class App extends React.Component {
     );
   }
 
+  showCharts() {
+    this.setState({
+      toggleCharts: !this.state.toggleCharts
+    })
+  }
+
   render() {
     return this.state.loading ? (
       <h1> Loading </h1>
+    ) : this.state.toggleCharts? (
+      <div>
+        <h1>FrenchToastio</h1>
+        <div className="burn-charts">
+        <button onClick={this.showCharts}>Show Task Board</button>
+        </div>
+        <BurnChart type={"Down"} />
+        <BurnChart type={"Up"} />
+      </div>
     ) : (
       <div>
         <h1>FrenchToastio</h1>
+        <div className="burn-charts">
+        <button onClick={this.showCharts}>Show Burn-Down and Burn-Up Charts</button>
+        </div>
         <div className="container">
           <div className="column-1" data-status="inbox" ref={this.inboxColumn}>
             <h2 className="column-header">Inbox</h2>
@@ -206,11 +228,7 @@ class App extends React.Component {
               <TaskItem key={key} item={item} />
             ))}
           </div>
-          <div
-            className="column-3"
-            data-status="inProgress"
-            ref={this.InProgressColumn}
-          >
+          <div className="column-3" data-status="inProgress" ref={this.InProgressColumn}>
             <h2 className="column-header">In Progress</h2>
             {this.state.inProgress.map((item, key) => (
               <TaskItem key={key} item={item} />
