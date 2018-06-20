@@ -54,6 +54,13 @@ app.get('/github/allIssues', (req, res) => {
 
 })
 
+app.post('/github/updateTask', (req, res) =>{
+  
+  console.log(req.body.content)
+  //For now we are console-loging the comment and not actually posting due to OAuth setup
+  res.send('Sucess!')
+})
+
 app.post('github/update', (req, res) => {
   //do here what ever you want to update the gitHub repo here using the github api
 })
