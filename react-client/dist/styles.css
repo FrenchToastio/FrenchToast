@@ -1,0 +1,48 @@
+h1 {
+  color: goldenrod;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "column1 column2 column3 column4";
+  grid-template-rows: auto;
+}
+
+[class*="column-"] {
+  margin: 0% 2%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.column-1 {
+  grid-area: column1;
+}
+
+.column-2 {
+  grid-area: column2;
+}
+
+.column-3 {
+  grid-area: column3;
+}
+
+.column-4 {
+  grid-area: column4;
+}
+
+.taskitem {
+  flex: 0 0 10%;
+  margin: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2%;
+  text-align: center;
+}
+
+.column-header {
+  text-align: center;
+  padding: 5%;
+}
