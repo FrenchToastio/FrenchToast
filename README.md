@@ -11,7 +11,11 @@ Our list of features we were able to get to
 ```
 1. Individual user view of board where assigned tasks to loged in user are sorted to the top of each column
 2. Color gradient or labeling tasks that have not been worked on in a while and acquired 'rust'
-3. Burn up graph
+3. Burn up graphm using C3
+4. A neural network POC that would recommend weights to tasks and would adjust this recommendation given
+some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hindsight 
+weighting, developer review of task difficulty, merge conflicts/revisions needed, ect..)
+5. Notification for which tasks need attention/updates
 ```
 
 List of features we didn't have time for but would love to see for Waffle.io
@@ -26,14 +30,11 @@ spends in particular states(in progress))
 5. Recommend tasks that have been in a certain state for too long to be broken down into an epic
 6. Organize each user's dashboard to show tasks at the top of the column that are relevant
 to them (i.e. display first all the ones assigned to them at the top)
-7. A neural network that would recommend weights to tasks and would adjust this recommendation given
-some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hindsight 
-weighting, developer review of task difficulty, merge conflicts/revisions needed, ect..)
 ```
 
 ### Tech Stack
 
-We went with fullstack Javascript for quick development using React on the front end and Node.js + Express for our back end. For our real-time features we used smee.io for our webhooks to our github App and sockets.io for our realtime update of our client.
+We went with fullstack Javascript for quick development using React on the front end and Node.js + Express for our back end. For our real-time features we used smee.io for our webhooks to our github App and sockets.io for our realtime update of our client, C3 for our data visualization and charts, and Synaptic.js for constructing the neural network POC.
 
 ### Instalation/Run instruction
 
