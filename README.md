@@ -15,18 +15,18 @@ Our list of features we were able to get to
 List of features we didn't have time for but would love to see for Waffle.io
 
 ```
-1. Daily Notifications for users to give updates in regards to assigned tasks - then post <br>
-those updates on cards themselves <br>
+1. Daily Notifications for users to give updates in regards to assigned tasks - then post
+those updates on cards themselves
 2. Color gradient or labeling tasks that have not been worked on in a while and acquired 'rust'
-3. Data visualization and metrics for (Actual Time vs Estimation Time, Time task <br>
-spends in particular states(in progress)) <br>
+3. Data visualization and metrics for (Actual Time vs Estimation Time, Time task
+spends in particular states(in progress))
 4. Anonymized voting system to determine task weight 
 5. Tree visualization of tasks/project
 6. Recommend tasks that have been in a certain state for too long to be broken down into an epic
-7. Organize each user's dashboard to show tasks at the top of the column that are relevant <br>
-to them (i.e. display first all the ones assigned to them at the top) <br>
-8. A neural network that would recommend weights to tasks and would adjust this recommendation given <br>
-some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hndsight weighting, <br>
+7. Organize each user's dashboard to show tasks at the top of the column that are relevant
+to them (i.e. display first all the ones assigned to them at the top)
+8. A neural network that would recommend weights to tasks and would adjust this recommendation given
+some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hndsight weighting,
 developer review of task difficulty, merge conflicts/revisions needed, ect..)
 ```
 
