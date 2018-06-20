@@ -2,6 +2,10 @@ h1 {
   color: goldenrod;
 }
 
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
 .container {
   display: grid;
   grid-template-areas: "column1 column2 column3 column4";
