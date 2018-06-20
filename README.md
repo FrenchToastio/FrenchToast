@@ -36,7 +36,7 @@ to them (i.e. display first all the ones assigned to them at the top)
 
 We went with fullstack Javascript for quick development using React on the front end and Node.js + Express for our back end. For our real-time features we used smee.io for our webhooks to our github App and sockets.io for our realtime update of our client, C3 for our data visualization and charts, and Synaptic.js for constructing the neural network POC.
 
-### Instalation/Run instruction
+### Installation/Run instruction
 
 1. Clone down this repo
 2. npm install
