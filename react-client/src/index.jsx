@@ -2,7 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import TaskItem from "./components/TaskItem.jsx";
 import Dragula from "react-dragula";
-import BurnChart from "./components/BurnChart.jsx"
+import BurnChart from "./components/BurnChart.jsx";
+
+const theUser = "jkang1220";
+
+const sortByUserAndDueDate = items =>
+  items.sort((a, b) => {
+    if (a.assigned === theUser && b.assigned === theUser) {
+      return new Date(a.due_date) - new Date(b.due_date);
+    } else if (a.assigned !== theUser && b.assigned !== theUser) {
+      return a.assigned - b.assigned;
+    } else if (a.assigned !== theUser && b.assigned === theUser) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
 class App extends React.Component {
   constructor(props) {
@@ -11,85 +26,107 @@ class App extends React.Component {
     this.todoColumn = React.createRef();
     this.InProgressColumn = React.createRef();
     this.doneColumn = React.createRef();
-    this.showCharts = this.showCharts.bind(this)
+    this.showCharts = this.showCharts.bind(this);
     this.state = {
-      loading: true, 
+      loading: true,
       toggleCharts: false
     };
-
   }
 
   getData() {
     const items = [
       {
         id: 0,
-        owner: "Manos",
+        assigned: "JClutch",
         status: "In Progress",
         description: "Task Uno",
-        due_date: "06/21/2018"
+        due_date: "06/22/2018"
       },
       {
         id: 1,
-        owner: "Manos",
+        assigned: "JClutch",
         status: "In Progress",
         description: "Task Uno",
-        due_date: "06/21/2018"
+        due_date: "06/23/2018"
       },
       {
         id: 2,
-        owner: "Manos",
+        assigned: "rvcwhitworth",
         status: "In Progress",
         description: "Task Uno",
         due_date: "06/21/2018"
       },
       {
         id: 3,
-        owner: "Ryan",
-        status: "Done",
-        description: "Task Uno",
-        due_date: "06/21/2018"
+        assigned: "jkang1220",
+        status: "In Progress",
+        description: "Build Chart",
+        due_date: "06/25/2018",
+        labels: ["Hi", "Priority", "Coffee"]
       },
       {
         id: 4,
-        owner: "Christine",
-        status: "Inbox",
-        description: "Task Uno",
-        due_date: "06/21/2018"
+        assigned: "jkang1220",
+        status: "Todo",
+        description: "Build UI",
+        due_date: "06/29/2018",
+        labels: ["Hia", "Priority", "Coffeeee"]
       },
       {
         id: 5,
-        owner: "Jimmy",
+        assigned: "jkang1220",
         status: "Todo",
         description: "Task Uno",
         due_date: "06/21/2018"
       },
       {
         id: 6,
-        owner: "Jason",
+        assigned: "cmourani",
         status: "Done",
         description: "Task Uno",
         due_date: "06/21/2018"
       },
       {
         id: 7,
-        owner: "Jason",
-        status: "Done",
+        assigned: "jkang1220",
+        status: "Inbox",
         description: "Task Uno",
         due_date: "06/21/2018"
       },
       {
         id: 8,
-        owner: "Jason",
-        status: "Done",
+        assigned: "cmourani",
+        status: "Inbox",
         description: "Task Uno",
         due_date: "06/21/2018"
       },
       {
         id: 9,
-        owner: "Jason",
+        assigned: "cmourani",
         status: "Done",
         description: "Task Uno",
         due_date: "06/21/2018"
+      },
+      {
+        id: 10,
+        assigned: "jkang1220",
+        status: "In Progress",
+        description: "Build Chart",
+        due_date: "06/19/2018"
+      },
+      {
+        id: 11,
+        assigned: "jkang1220",
+        status: "In Progress",
+        description: "Build Chart",
+        due_date: "08/25/2018"
+      },
+      {
+        id: 12,
+        assigned: "jkang1220",
+        status: "In Progress",
+        description: "Build Chart",
+        due_date: "07/25/2018"
       }
     ];
     return items;
@@ -104,7 +141,17 @@ class App extends React.Component {
       inProgress: [],
       done: []
     };
-    let items = this.getData();
+
+    let currentDate = new Date();
+    console.log("currentDate", currentDate);
+    let items = sortByUserAndDueDate(this.getData());
+    // .sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+    console.log("sorted by current user and date", items);
+    //sort by username at the top (assignee)
+    //then sort by milestone
+
+    console.log("items", items);
+
     items.forEach(item => {
       switch (item.status) {
         case "Inbox":
@@ -143,8 +190,7 @@ class App extends React.Component {
           let targetColumn = target.dataset.status;
           let targetColumnArr = this.state[targetColumn];
           let sourceColumn = source.dataset.status;
-          console.log('target', target, 'source', source.dataset.status)
-
+          console.log("target", target, "source", source.dataset.status);
 
           //NEED to get rid of state logic and rendering off that and now integrate with Github api and render off socket updates and such
 
@@ -152,7 +198,7 @@ class App extends React.Component {
           let item = this.state[sourceColumn].filter(item => {
             return item.id == el.dataset.id;
           })[0];
-          console.log('what is item??', item)
+          console.log("what is item??", item);
           //get new source array after remove item
           let sourceColumnArr = this.state[sourceColumn].filter(
             item => item.id !== el.dataset.id
@@ -194,17 +240,17 @@ class App extends React.Component {
   showCharts() {
     this.setState({
       toggleCharts: !this.state.toggleCharts
-    })
+    });
   }
 
   render() {
     return this.state.loading ? (
       <h1> Loading </h1>
-    ) : this.state.toggleCharts? (
+    ) : this.state.toggleCharts ? (
       <div>
         <h1>FrenchToastio</h1>
         <div className="burn-charts">
-        <button onClick={this.showCharts}>Show Task Board</button>
+          <button onClick={this.showCharts}>Show Task Board</button>
         </div>
         <BurnChart type={"Down"} />
         <BurnChart type={"Up"} />
@@ -213,8 +259,11 @@ class App extends React.Component {
       <div>
         <h1>FrenchToastio</h1>
         <div className="burn-charts">
-        <button onClick={this.showCharts}>Show Burn-Down and Burn-Up Charts</button>
+          <button onClick={this.showCharts}>
+            Show Burn-Down and Burn-Up Charts
+          </button>
         </div>
+        <h3>Welcome {theUser}!</h3>
         <div className="container">
           <div className="column-1" data-status="inbox" ref={this.inboxColumn}>
             <h2 className="column-header">Inbox</h2>
@@ -228,7 +277,11 @@ class App extends React.Component {
               <TaskItem key={key} item={item} />
             ))}
           </div>
-          <div className="column-3" data-status="inProgress" ref={this.InProgressColumn}>
+          <div
+            className="column-3"
+            data-status="inProgress"
+            ref={this.InProgressColumn}
+          >
             <h2 className="column-header">In Progress</h2>
             {this.state.inProgress.map((item, key) => (
               <TaskItem key={key} item={item} />
