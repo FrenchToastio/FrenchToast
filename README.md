@@ -26,8 +26,8 @@ spends in particular states(in progress))
 7. Organize each user's dashboard to show tasks at the top of the column that are relevant
 to them (i.e. display first all the ones assigned to them at the top)
 8. A neural network that would recommend weights to tasks and would adjust this recommendation given
-some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hndsight weighting,
-developer review of task difficulty, merge conflicts/revisions needed, ect..)
+some criteria (i.e. expected time to completetion vs actual time, Forsight weighting vs hindsight 
+weighting, developer review of task difficulty, merge conflicts/revisions needed, ect..)
 ```
 
 ### Tech Stack
